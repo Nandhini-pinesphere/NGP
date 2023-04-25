@@ -1,0 +1,102 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>Simple House Template</title>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet" />
+	
+	<link rel="stylesheet" type="text/css" href="{% static 'css/templatemo-style.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/all.min.css' %}">
+	<!-- Linking jQuery JS file -->
+
+
+
+</head>
+<!--
+
+Simple House
+
+https://templatemo.com/tm-539-simple-house
+
+-->
+
+<body>
+
+	<div class="container">
+		<!-- Top box -->
+		<!-- Logo & Site Name -->
+		<div class="placeholder">
+			<div class="parallax-window" data-parallax="scroll" data-image-src="">
+				<div class="tm-header">
+					<div class="row tm-header-inner">
+						<div class="col-md-6 col-12">
+							<img src="{% static 'img/simple-house-logo.png' %}" alt="Logo" class="tm-site-logo" />
+							<div class="tm-site-text-box">
+								<h1 class="tm-site-title">Dr.N.G.P</h1>
+								<h6 class="tm-site-description">Canteen Billing Software</h6>
+							</div>
+						</div>
+						<nav class="col-md-6 col-12 tm-nav">
+							<ul class="tm-nav-ul">
+								<li class="tm-nav-li">
+									<a href="{% url 'index' %}" style="text-decoration: none;" class="tm-nav-link active">
+										Homepage
+									</a>
+								</li>
+								<li class="tm-nav-li"><a href="#" class="tm-nav-link">Mycart</a></li>
+								<li class="tm-nav-li"><a href="#" class="tm-nav-link">Checkout</a></li>
+								
+							</ul>
+						</nav>
+
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+        {% block content %}
+        
+        {% endblock %}
+
+	<footer class="tm-footer text-center" style="background-color: #4a5b51; ">
+		<p style="color: white;">Copyright &copy; 2023 Pinesphere Solution Pvt Ltd
+
+			| Design: <a rel="nofollow" href="https://Pinesphere.com" style="color: white">Pinesphere</a></p>
+	</footer>
+</div>
+	<script src="{% static 'js/jquery.min.js' %}"></script>
+
+	<!-- Linking Parallax JS file -->
+	<script src="{% static 'js/parallax.min.js' %}"></script>
+
+	<script>
+		$(document).ready(function () {
+			// Handle click on paging links
+			$('.tm-paging-link').click(function (e) {
+				e.preventDefault();
+
+				var page = $(this).text().toLowerCase();
+				$('.tm-gallery-page').addClass('hidden');
+				$('#tm-gallery-page-' + page).removeClass('hidden');
+				$('.tm-paging-link').removeClass('active');
+				$(this).addClass("active");
+			});
+
+
+		}); // <-- closing tag for $(document).ready()
+
+
+
+	</script>
+
+
+</body>
+
+</html>

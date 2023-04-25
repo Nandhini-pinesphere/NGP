@@ -1,0 +1,311 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>Simple House Template</title>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet" />
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/templatemo-style.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/all.min.css' %}">
+	<!-- Linking jQuery JS file -->
+
+
+
+</head>
+<!--
+
+Simple House
+
+https://templatemo.com/tm-539-simple-house
+
+-->
+
+<body>
+
+	<div class="container">
+		<!-- Top box -->
+		<!-- Logo & Site Name -->
+		<div class="placeholder">
+			<div class="parallax-window" data-parallax="scroll" data-image-src="">
+				<div class="tm-header">
+					<div class="row tm-header-inner">
+						<div class="col-md-6 col-12">
+							<img src="{% static 'img/simple-house-logo.png' %}" alt="Logo" class="tm-site-logo" />
+							<div class="tm-site-text-box">
+								<h1 class="tm-site-title">Dr.N.G.P</h1>
+								<h6 class="tm-site-description">Canteen Billing Software</h6>
+							</div>
+						</div>
+						<nav class="col-md-6 col-12 tm-nav">
+							<ul class="tm-nav-ul">
+								<li class="tm-nav-li">
+
+									<a href="{% url 'show_cart' %}" class="tm-nav-link active">
+										<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+										<span id="cart-count" class="cart-count">{{total_item}}</span>
+									</a>
+								</li>
+								<li class="tm-nav-li"><a href="{% url 'about' %}" class="tm-nav-link">Checkout</a></li>
+								<li class="tm-nav-li"><a href="{% url 'contact' %}" class="tm-nav-link">Contact</a></li>
+							</ul>
+						</nav>
+
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<main>
+			<header class="row tm-welcome-section">
+				<h2 class="col-12 text-center tm-section-title">Welcome to the NGP College canteen</h2>
+				<p class="col-12 text-center">where we serve delicious and nutritious meals to students, faculty, and
+					staff alike. Come and experience our wide range of mouth-watering dishes, made from fresh
+					ingredients and prepared with care</p>
+			</header>
+
+			<div class="tm-paging-links">
+				<nav>
+					<ul>
+						<li class="tm-paging-item"><a href="#" class="tm-paging-link active">Snacks</a></li>
+						<li class="tm-paging-item"><a href="#" class="tm-paging-link">Breakfast</a></li>
+						<li class="tm-paging-item"><a href="#" class="tm-paging-link">Lunch</a></li>
+					</ul>
+				</nav>
+			</div>
+
+			<!-- Gallery -->
+			<div class="row tm-gallery">
+				<!-- gallery page 1 -->
+				<div id="tm-gallery-page-snacks" class="tm-gallery-page">
+					{% for food in foods %}
+					<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+						<figure>
+							<div class="item">
+								<img src="{{ food.image.url }}" alt="{{ food.name }}" style="height: 250px; width:250px"
+									class="img-fluid tm-gallery-img food-image addToCart"
+									onclick="addToCart('{{ food.id }}')" />
+							</div>
+							<figcaption>
+								<p class="tm-gallery-description">{{ food.name }}</p>
+								<p class="tm-gallery-description">{{ food.description }}</p>
+								<p class="tm-gallery-price">₹{{ food.price }}</p>
+							</figcaption>
+						</figure>
+					</article>
+
+					{% endfor %}
+				</div>
+
+				<div class="row">
+					<div class="col-12">
+						<div id="cart-list-container" style="display:none;">
+							<ul id="added-items-list"></ul>
+						</div>
+					</div>
+				</div>
+
+
+
+
+			</div> <!-- gallery page 1 -->
+
+			<!-- gallery page 2 -->
+			<div id="tm-gallery-page-breakfast" class="tm-gallery-page hidden">
+				<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+					<figure>
+						<img src="{% static 'img/gallery/04.jpg' %}" alt="Image" class="img-fluid tm-gallery-img" />
+						<figcaption>
+							<h4 class="tm-gallery-title">breakfast Menu One</h4>
+							<p class="tm-gallery-description">Proin eu velit egestas, viverra sapien eget, consequat
+								nunc. Vestibulum tristique</p>
+							<p class="tm-gallery-price">$25</p>
+						</figcaption>
+					</figure>
+				</article>
+				<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+					<figure>
+						<img src="{% static 'img/gallery/03.jpg' %}" alt="Image" class="img-fluid tm-gallery-img" />
+						<figcaption>
+							<h4 class="tm-gallery-title">Second Title breakfast</h4>
+							<p class="tm-gallery-description">Proin eu velit egestas, viverra sapien eget, consequat
+								nunc. Vestibulum tristique</p>
+							<p class="tm-gallery-price">$30</p>
+						</figcaption>
+					</figure>
+				</article>
+				<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+					<figure>
+						<img src="{% static 'img/gallery/05.jpg' %}" alt="Image" class="img-fluid tm-gallery-img" />
+						<figcaption>
+							<h4 class="tm-gallery-title">Third breakfast Item</h4>
+							<p class="tm-gallery-description">Proin eu velit egestas, viverra sapien eget, consequat
+								nunc. Vestibulum tristique</p>
+							<p class="tm-gallery-price">$45</p>
+						</figcaption>
+					</figure>
+				</article>
+				<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+					<figure>
+						<img src="{% static 'img/gallery/01.jpg' %}" alt="Image" class="img-fluid tm-gallery-img" />
+						<figcaption>
+							<h4 class="tm-gallery-title">Superior breakfast</h4>
+							<p class="tm-gallery-description">Proin eu velit egestas, viverra sapien eget, consequat
+								nunc. Vestibulum tristique</p>
+							<p class="tm-gallery-price">$50</p>
+						</figcaption>
+					</figure>
+				</article>
+				<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+					<figure>
+						<img src="{% static 'img/gallery/08.jpg' %}" alt="Image" class="img-fluid tm-gallery-img" />
+						<figcaption>
+							<h4 class="tm-gallery-title">Sed ultricies dui</h4>
+							<p class="tm-gallery-description">Proin eu velit egestas, viverra sapien eget, consequat
+								nunc. Vestibulum tristique</p>
+							<p class="tm-gallery-price">$55 / $60</p>
+						</figcaption>
+					</figure>
+				</article>
+				<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+					<figure>
+						<img src="{% static 'img/gallery/07.jpg' %}" alt="Image" class="img-fluid tm-gallery-img" />
+						<figcaption>
+							<h4 class="tm-gallery-title">Maecenas eget justo</h4>
+							<p class="tm-gallery-description">Proin eu velit egestas, viverra sapien eget, consequat
+								nunc. Vestibulum tristique</p>
+							<p class="tm-gallery-price">$75</p>
+						</figcaption>
+					</figure>
+				</article>
+			</div> <!-- gallery page 2 -->
+
+			<!-- gallery page 3 -->
+			<div id="tm-gallery-page-lunch" class="tm-gallery-page hidden">
+				<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+					<figure>
+						<img src="{% static 'img/gallery/08.jpg' %}" alt="Image" class="img-fluid tm-gallery-img" />
+						<figcaption>
+							<h4 class="tm-gallery-title">Lunch One</h4>
+							<p class="tm-gallery-description">Orci varius natoque penatibus et magnis dis parturient
+								montes, nascetur ridiculus mus.</p>
+							<p class="tm-gallery-price">$12.50</p>
+						</figcaption>
+					</figure>
+				</article>
+				<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+					<figure>
+						<img src="{% static 'img/gallery/07.jpg' %}" alt="Image" class="img-fluid tm-gallery-img" />
+						<figcaption>
+							<h4 class="tm-gallery-title">Lunch Second</h4>
+							<p class="tm-gallery-description">Orci varius natoque penatibus et magnis dis parturient
+								montes, nascetur ridiculus mus.</p>
+							<p class="tm-gallery-price">$15.50</p>
+						</figcaption>
+					</figure>
+				</article>
+				<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+					<figure>
+						<img src="{% static 'img/gallery/06.jpg' %}" alt="Image" class="img-fluid tm-gallery-img" />
+						<figcaption>
+							<h4 class="tm-gallery-title">Third Soft Lunch</h4>
+							<p class="tm-gallery-description">Orci varius natoque penatibus et magnis dis parturient
+								montes, nascetur ridiculus mus.</p>
+							<p class="tm-gallery-price">$20.50</p>
+						</figcaption>
+					</figure>
+				</article>
+				<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+					<figure>
+						<img src="{% static 'img/gallery/05.jpg' %}" alt="Image" class="img-fluid tm-gallery-img" />
+						<figcaption>
+							<h4 class="tm-gallery-title">Aliquam sagittis</h4>
+							<p class="tm-gallery-description">Orci varius natoque penatibus et magnis dis parturient
+								montes, nascetur ridiculus mus.</p>
+							<p class="tm-gallery-price">$30.25</p>
+						</figcaption>
+					</figure>
+				</article>
+				<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+					<figure>
+						<img src="{% static 'img/gallery/04.jpg' %}" alt="Image" class="img-fluid tm-gallery-img" />
+						<figcaption>
+							<h4 class="tm-gallery-title">Maecenas eget justo</h4>
+							<p class="tm-gallery-description">Orci varius natoque penatibus et magnis dis parturient
+								montes, nascetur ridiculus mus.</p>
+							<p class="tm-gallery-price">$35.50</p>
+						</figcaption>
+					</figure>
+				</article>
+				<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+					<figure>
+						<img src="{% static 'img/gallery/03.jpg' %}" alt="Image" class="img-fluid tm-gallery-img" />
+						<figcaption>
+							<h4 class="tm-gallery-title">Quisque et felis eros</h4>
+							<p class="tm-gallery-description">Orci varius natoque penatibus et magnis dis parturient
+								montes, nascetur ridiculus mus.</p>
+							<p class="tm-gallery-price">$40.50</p>
+						</figcaption>
+					</figure>
+				</article>
+
+			</div> <!-- gallery page 3 -->
+
+
+		</main>
+
+		<footer class="tm-footer text-center" style="background-color: #4a5b51; ">
+			<p style="color: white;">Copyright &copy; 2023 Pinesphere Solution Pvt Ltd
+
+				| Design: <a rel="nofollow" href="https://Pinesphere.com" style="color: white">Pinesphere</a></p>
+		</footer>
+	</div>
+	<script src="{% static 'js/jquery.min.js' %}"></script>
+
+	<!-- Linking Parallax JS file -->
+	<script src="{% static 'js/parallax.min.js' %}"></script>
+
+	<script>
+		$(document).ready(function () {
+			// Handle click on paging links
+			$('.tm-paging-link').click(function (e) {
+				e.preventDefault();
+
+				var page = $(this).text().toLowerCase();
+				$('.tm-gallery-page').addClass('hidden');
+				$('#tm-gallery-page-' + page).removeClass('hidden');
+				$('.tm-paging-link').removeClass('active');
+				$(this).addClass("active");
+			});
+
+
+		}); // <-- closing tag for $(document).ready()
+
+		function addToCart(food_id) {
+			// Send an AJAX request to add the item to the cart
+			$.ajax({
+				url: '/addtocart/',
+				data: { food_id: food_id },
+				success: function () {
+					// Reload the page to update the cart count
+					location.reload();
+				},
+				error: function () {
+					alert('Failed to add item to cart.');
+				}
+			});
+		}
+
+
+	</script>
+
+
+</body>
+
+</html>

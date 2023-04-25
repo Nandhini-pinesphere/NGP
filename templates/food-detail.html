@@ -1,0 +1,26 @@
+{% extends 'home.html' %}
+{% block title %}Food Details{% endblock title %}
+{% block content %}
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-sm-6 text-center align self-center">
+            <img src="{{foods.image.url}}" alt="" class="img-fluid img-thumbnail">
+        </div>
+        <div class="col-sm-5 offset-sm-1">
+            <h2>{{foods.name}}</h2>
+            <hr>
+            <p>Description: Good</p>
+            <h3>Rs: {{foods.price}}</h3>
+
+
+            <form action="/addtocart" class="btn-block">
+                {% csrf_token %}
+                <input type="hidden" name="food_id" value="{{foods.id}}" id="food_id">
+                <button type="submit" class="btn-info shadow px-5 py-2 ms-4">Add To Cart</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
